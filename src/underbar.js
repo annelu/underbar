@@ -103,6 +103,19 @@ var _ = { };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var result = [];
+    var uniq = true;
+    for (var i = 0; i < array.length; i++) {
+      uniq = true;
+      for (var j = 0; j < array.length; j++) {
+        if (array[i] === result[j])
+          uniq = false;
+      }
+      if (uniq === true) {
+        result.push(array[i]);
+      }
+    }
+    return result;
   };
 
 
