@@ -159,8 +159,8 @@ var _ = { };
   // 
   _.reduce = function(collection, iterator, initialValue) {
     var previousValue = initialValue !== undefined ? initialValue : 0;
-    for (var i = 0; i < collection.length; i++) {
-      previousValue = iterator(previousValue, collection[i]);
+    for (var key in collection) {
+     previousValue = iterator(previousValue, collection[key]); 
     }
     return previousValue;
   };
