@@ -132,8 +132,14 @@ var _ = { };
   // Calls the method named by methodName on each value in the list.
   _.invoke = function(list, methodName, args) {
     var result = [];
-    for (var i = 0; i < list.length; i++) {
-      result.push(list[i][methodName].call(list[i]));
+    if (typeof methodName === "string") {
+      for (var i = 0; i < list.length; i++) {
+        result.push(list[i][methodName].call(list[i]));
+      }
+    } else {
+      for (var i = 0; i < list.length; i++) {
+        result.push(methodName.call(list[i]));        
+      }
     }
     return result;
   };
@@ -152,6 +158,7 @@ var _ = { };
   //   }, 0); // should be 6
   //
   _.reduce = function(collection, iterator, initialValue) {
+
   };
 
   // Determine if the array or object contains a given value (using `===`).
