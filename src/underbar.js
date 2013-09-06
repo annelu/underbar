@@ -22,19 +22,13 @@ var _ = { };
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
-    var result = [];
     if (n === undefined) {
-      result = array[array.length - 1];
-    } else if (array.length > n) {
-      for (var i = array.length - n; i < array.length; i++) {
-        result.push(array[i]);
-      }      
+      return array[array.length - 1]
+    } else if (n < array.length) {
+      return array.slice(array.length - n, array.length);
     } else {
-      for (var i = 0; i < array.length; i++) {
-        result.push(array[i]);
-      }            
+      return array
     }
-    return result;
   };
 
   // Call iterator(value, key, collection) for each element of collection.
