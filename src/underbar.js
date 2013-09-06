@@ -156,9 +156,13 @@ var _ = { };
   //   var sum = _.reduce(numbers, function(total, number){
   //     return total + number;
   //   }, 0); // should be 6
-  //
+  // 
   _.reduce = function(collection, iterator, initialValue) {
-
+    var previousValue = initialValue !== undefined ? initialValue : 0;
+    for (var i = 0; i < collection.length; i++) {
+      previousValue = iterator(previousValue, collection[i]);
+    }
+    return previousValue;
   };
 
   // Determine if the array or object contains a given value (using `===`).
