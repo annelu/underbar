@@ -311,6 +311,17 @@ var _ = { };
 
   // Shuffle an array.
   _.shuffle = function(array) {
+    var unshuffled = array.slice()
+    var shuffled = [];
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    while (unshuffled.length > 0) {
+      var index = getRandomInt(0, unshuffled.length - 1)
+      shuffled.push(unshuffled[index]);
+      unshuffled.splice(index, 1);
+    }
+    return shuffled;
   };
 
 
